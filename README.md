@@ -162,13 +162,14 @@ you'll need to deal with the fact that Heroku uses emails for usernames and
 Django doesn't. So a minimal remote user backend might look like this:
 
 ```python
+import hashlib
 from django.contrib.auth.backends import RemoteUserBackend
 
 class HerokuRemoteUserBackend(RemoteUserBackend):
     create_unknown_user = True
 
     def clean_username(self, username):
-        return username.replace('@', '-').replace('.', '-')
+        return hashlib.md5(username).hexdigest()
 ```
 
 In practice, you may want to do something more complex (probably involving a
