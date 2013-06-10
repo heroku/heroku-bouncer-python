@@ -8,6 +8,7 @@ setup(
     author_email = "jacob@heroku.com",
     url = "http://github.com/heroku/heroku-bouncer-python",
     py_modules = ['heroku_bouncer'],
+    install_requires = ['requests>=1.2'],
     classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
