@@ -153,7 +153,7 @@ app.wsgi_app = heroku_bouncer.bouncer(app.wsgi_app)
 
 Integrating with Django's a bit more complex. First, you'll need to
 [enable authentication against REMOTE_USER](https://docs.djangoproject.com/en/dev/howto/auth-remote-user/).
-by add `'django.contrib.auth.middleware.RemoteUserMiddleware'`
+by adding `'django.contrib.auth.middleware.RemoteUserMiddleware'`
    to your ``MIDDLEWARE_CLASSES`` - make sure it's *after*
    `AuthenticationMiddleware`.
 
