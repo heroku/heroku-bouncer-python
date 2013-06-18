@@ -10,15 +10,6 @@ Inspired and cribbed from [heroku-bouncer](https://github.com/heroku/heroku-boun
 pip install heroku-bouncer
 ```
 
-Right now this requires a trunk version of
-[wsgi-oauth2](https://github.com/StyleShare/wsgi-oauth2), so you'll also need:
-
-```
-pip install git+git://github.com/StyleShare/wsgi-oauth2.git
-```
-
-(Once wsgi-oauth2 gets a new release you won't need this any more.)
-
 ## Usage
 
 1. Create your OAuth client using `/auth/heroku/callback/` as your callback
