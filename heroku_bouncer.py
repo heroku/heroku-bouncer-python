@@ -5,7 +5,7 @@ import requests
 def bouncer(application, set_remote_user=True, herokai_only=False,
             path='/auth/heroku/callback/', cookie='herokuoauthsess',
             forbidden_path='/auth/heroku/forbidden/', forbidden_passthrough=False,
-            client_id=None, client_secret=None, secret_key=None):
+            client_id=None, client_secret=None, secret_key=None, scope='identity'):
     try:
         client_id = client_id or os.environ['HEROKU_OAUTH_ID']
         client_secret = client_secret or os.environ['HEROKU_OAUTH_SECRET']
@@ -14,7 +14,7 @@ def bouncer(application, set_remote_user=True, herokai_only=False,
         raise EnvironmentError("Missing configuration in environ: %s" % e)
 
     service = HerokuService(herokai_only=herokai_only)
-    client = service.make_client(client_id=client_id, client_secret=client_secret)
+    client = service.make_client(client_id=client_id, client_secret=client_secret, scope=scope)
     return client.wsgi_middleware(
         application = application,
         secret = secret_key,
