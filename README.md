@@ -95,6 +95,11 @@ Those options are:
   `@heroku.com` email addresses. You probably don't want this unless you
   work at Heroku.
 
+* `scope` - the OAuth scope(s), as [defined in Heroku's documentation](https://devcenter.heroku.com/articles/oauth#scopes),
+  that your app requires. If you're requesting more than one scope, the scopes
+  should be separated by spaces (e.g. `app = bouncer(app, scope="read write")`).
+  Defaults to `"identity"`.
+
 * `path` - the path to use for the OAuth callback. This is the same path you'll
   pass to `heroku clients:create`; **note that it must end in a trailing
   slash!**. Defaults to ``/auth/heroku/callback/``, which you can probably
