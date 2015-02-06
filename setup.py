@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name = "heroku-bouncer",
     description = "WSGI middleware that requires Heroku OAuth for all requests.",
-    version = "1.2",
+    version = "1.3",
     author = "Jacob Kaplan-Moss",
     author_email = "jacob@heroku.com",
     url = "http://github.com/heroku/heroku-bouncer-python",
