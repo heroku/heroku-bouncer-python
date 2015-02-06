@@ -47,6 +47,10 @@ you're using. For example, in Django you'll find this in
 
 This is a dict-like object with a couple of useful keys:
 
+* `"user"` - the Heroku 
+  [account object](https://devcenter.heroku.com/articles/platform-api-reference#account) 
+  from the Platform API.
+
 * `"username"` - the Heroku account email address (same as `env["REMOTE_USER"]`).
 
 * `"access_token"` - the OAuth user access token. You can use this to
@@ -91,9 +95,17 @@ Those options are:
   There's not a great reason to set this to `False`, but you can if you
   really feel like it I guess.
 
-* `herokai_only` - `False` by default. If `True`, only allow logins from
-  `@heroku.com` email addresses. You probably don't want this unless you
-  work at Heroku.
+* `auth_callback` - an optional callback function that will be called to decide
+  if the authorized user should be allowed in. This will be passed a single
+  arguent, the [session object](#session). For example, to limit access to
+  users from a single domain:
+
+```python
+def callback(session):
+    return session['user']['email'].endswith('@example.com')
+
+app = bouncer(app, auth_callback=callback)
+```
 
 * `scope` - the OAuth scope(s), as [defined in Heroku's documentation](https://devcenter.heroku.com/articles/oauth#scopes),
   that your app requires. If you're requesting more than one scope, the scopes
