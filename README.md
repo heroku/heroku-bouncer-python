@@ -43,7 +43,7 @@ For more details about the user, you can access `"wsgioauth2.session"` in the
 WSGI environ. You'll probably be getting this environ from whatever framework
 you're using. For example, in Django you'll find this in
 `request.META['wsgioauth2.session']`; in Flask it'll be
-`flask.request['wsgioauth2.session']
+`flask.request.environ['wsgioauth2.session']`
 
 This is a dict-like object with a couple of useful keys:
 
